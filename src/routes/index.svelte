@@ -6,7 +6,7 @@
     import {writable} from "svelte/store";
     import QTable from '$lib/QTable.svelte';
     import { TabContent, TabPane } from 'sveltestrap';
-    import {addData} from "$lib/rl.js";
+    import {addData, resetChart} from "$lib/rl.js";
     import type {Chart} from "chart.js";
     import ChartComp from '$lib/Chart.svelte';
     import Form from '$lib/Form.svelte';
@@ -92,6 +92,7 @@
     const stop = () => {
         launched = false;
         state_store.set(new Env({x: 0, y: 0}).state);
+        resetChart(chart);
     }
 </script>
 

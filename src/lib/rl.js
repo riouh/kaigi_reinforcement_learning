@@ -282,6 +282,19 @@ export function addData(chart, label, data) {
     chart.update();
 }
 
+/**
+* @param {import('chart.js').Chart} chart
+* @return {void}
+*/
+export function resetChart(chart) {
+    if (chart.data) {
+        chart.data.labels = [];
+        chart.data.datasets = [];
+        chart.update();
+        console.debug("Chart reset!")
+    }
+}
+
 /** @type {import('./forms').FormLearn} */
 export const INIT_LEARN_OPTIONS = {
     nr_episodes: 5000,
