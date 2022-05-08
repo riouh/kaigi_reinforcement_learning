@@ -43,7 +43,7 @@
 </Modal>
 
 <Modal isOpen={openPlayModal} toggle="{togglePlay}">
-    <ModalHeader {togglePlay}>Parameters for Learning</ModalHeader>
+    <ModalHeader {togglePlay}>Parameters for Playing</ModalHeader>
     <div class="modal-body" style="max-height: 500px; overflow: scroll">
       <FormPlay bind:options={play_options}/>
     </div>

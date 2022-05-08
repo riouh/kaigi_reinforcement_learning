@@ -34,7 +34,7 @@
         const agent = new Agent(false, learn_options, play_options);
         let n_ep = 0
 
-        while (n_ep <= play_options.nr_episodes) {
+        while (n_ep <= play_options.nr_episodes && launched) {
             console.log("Episode: ", n_ep);
             const new_init_position: Position = possible_init_positions[Math.floor(Math.random() * possible_init_positions.length)];
             const env = new Env(new_init_position);
@@ -45,7 +45,7 @@
             state_store.set(state);
             await sleep(play_options.sleep_time_s * 1000);
 
-            while (!done) {
+            while (!done && launched) {
                 const action = agent.act(state, n_ep);
                 const episode = env.step(action);
                 done = episode.done || len_episode > 30;
@@ -91,6 +91,7 @@
 
     const stop = () => {
         launched = false;
+        state_store.set(new Env({x: 0, y: 0}).state);
     }
 </script>
 
