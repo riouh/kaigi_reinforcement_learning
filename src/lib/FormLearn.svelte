@@ -6,7 +6,6 @@
     export let options: FormLearn;
 </script>
 
-
 <Form validated id="submit">
     <FormInputNumber title='Number of episodes' bind:value={options.nr_episodes} id="nr_episodes"/>
     <FormInputNumber step={0.01} title='Discount Factor' bind:value={options.discount_factor} id="discount_factor"/>

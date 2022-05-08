@@ -12,6 +12,7 @@
 
     let openLearnModal = false;
     let openPlayModal = false;
+
     const toggleLearn = () => {
         openLearnModal = !openLearnModal;
     }
@@ -19,8 +20,17 @@
         openPlayModal = !openPlayModal;
     }
 
+    async function handleKeydown(event) {
+		if (event.keyCode === 'Enter') {
+            await submit();
+        }
+
+	}
+
     $: learn = openLearnModal === true;
 </script>
+
+<svelte:window on:keydown={handleKeydown}/>
 
 <div class="row">
     <div class="col d-grid">

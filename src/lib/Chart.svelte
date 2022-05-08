@@ -14,15 +14,17 @@
            let ctx = document.getElementById("myChart").getContext("2d") as HTMLCanvasElement;
            ctx.height = 250;
            chart = new Chart(ctx, {
-            type: 'line',
+            type: 'scatter',
             data: {
                     labels: chartLabels,
                     datasets: [{
                             label: 'Episode length',
                             backgroundColor: 'rgb(255, 99, 132)',
                             borderColor: 'rgb(255, 99, 132)',
-                            data: chartValues
-                    }]
+                            data: chartValues,
+                            pointRadius: 1
+                    }],
+
             },
 		});
         }

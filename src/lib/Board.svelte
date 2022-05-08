@@ -11,13 +11,13 @@
 
 
 <div class="constainer p-3 d-flex justify-content-center">
-	<div style="height: 200px; width: 400px">
+	<div style="height: 300px; width: 400px">
 {#each board as row, j}
 	<div class="row">
 		{#each row as col, i}
 			<div class="col border" style={`background-color: ${col.color}`}>
 				<div class="row">
-					<div class="col">{col.reward}</div>
+					<div class="col fw-bold">{col.reward}</div>
 					<div class="col"></div>
 					<div class="col"></div>
 				</div>
@@ -26,13 +26,16 @@
 					<div class="col">
 						{#if state.x === i && state.y === j}
 							<span class="dot">
-								<i class="bi bi-person"></i>
+								<i class="bi bi-person-fill"></i>
 							</span>
 						{:else}
 							<span class="dot"/>
 						{/if}
 					</div>
 					<div class="col"></div>
+				</div>
+				<div class="row">
+					<div class="col fst-italic">{`(${i}, ${j})`}</div>
 				</div>
 			</div>
 		{/each}

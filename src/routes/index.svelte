@@ -82,6 +82,7 @@
             );
             q_table = message.q_table;
             addData(chart, message.n_episode.toString(), message.len_episode);
+            console.log("Finished episode " + n_episode);
         })
         io.on("finished_learning", message => { // Another listener for the name:
             console.log(`Finished learning in ${message.process_time_s} seconds!`)
@@ -94,6 +95,17 @@
         state_store.set(new Env({x: 0, y: 0}).state);
         resetChart(chart);
     }
+
+    const assignQTable = (qtable) => {
+        play_options = {...play_options, q_values: qtable};
+    }
+
+    const assignPlayOptions = (playOptions) => {
+        q_table = playOptions.q_values;
+    }
+
+    $: assignQTable(q_table);
+    $: assignPlayOptions(play_options);
 </script>
 
 <div class="container py-3 px-5">
@@ -114,7 +126,7 @@
       </TabPane>
       <TabPane tabId="bravo" tab="Q-Table">
         <div class="mx-5 px-5">
-            <QTable {q_table}/>
+            <QTable bind:q_table/>
         </div>
       </TabPane>
     </TabContent>
